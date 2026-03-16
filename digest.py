@@ -34,9 +34,11 @@ FEEDS = {
         ("The Verge", "https://www.theverge.com/rss/index.xml"),
         ("Wired", "https://www.wired.com/feed/rss"),
     ],
-    "creator_economy": [
-        ("Digiday", "https://digiday.com/feed/"),
-        ("Social Media Today", "https://www.socialmediatoday.com/rss/"),
+    "philosophy_behavior": [
+("Psychology Today", "https://www.psychologytoday.com/us/front-page/feed"),
+        ("Greater Good Magazine", "https://greatergood.berkeley.edu/feeds/news"),
+        ("Harvard Business Review", "https://hbr.org/feed"),
+        ("MIT Sloan Management Review", "https://sloanreview.mit.edu/feed/"),
     ],
 }
 
@@ -68,7 +70,7 @@ def build_gemini_prompt(articles: dict) -> str:
         "finance": "FINANCE",
         "geopolitics": "GEOPOLITICS",
         "tech": "TECH",
-        "creator_economy": "CREATOR ECONOMY",
+        "philosophy_behavior": "CREATOR ECONOMY",
     }
     prompt_parts = [
         "Act as a sharp, witty friend who actually reads the news — someone who gives you the real deal "
@@ -77,8 +79,9 @@ def build_gemini_prompt(articles: dict) -> str:
         "1. **Money Talk** — Finance and markets (use $ signs, be direct, hint at what it means for regular people)\n"
         "2. **World Lore** — Geopolitics and global affairs (smart but accessible, light sarcasm welcome)\n"
         "3. **Tech Tea** — Tech news (be sharp and opinionated, call out hype when you see it)\n"
-        "4. **Creator Szn** — Creator economy and social media trends (talk like you're in the industry)\n"
-        "5. **Speed Round** — 5–7 one-liner quick takes on anything notable from all categories\n\n"
+        "4. **Mind & Behavior** — Philosophy and human psychology insights (thoughtful, curious tone)\n"
+        "5. **Lead & Grow** — Leadership and organizational psychology (practical, insightful tone)\n"
+        "6. **Speed Round** — 5–7 one-liner quick takes on anything notable from all categories\n\n"
         "Rules:\n"
         "- Write in second person ('you') where it makes sense\n"
         "- Keep each section to 3–5 punchy bullet points (except Speed Round)\n"
@@ -160,7 +163,7 @@ SECTION_CONFIG = {
         "bg": "#2d1b69",
         "border": "#7c3aed",
     },
-    "Creator Szn": {
+    "Mind & Behavior": {
         "emoji": "🎨",
         "color": "#fb923c",
         "bg": "#431407",
@@ -249,7 +252,7 @@ def build_html_email(digest_text: str, date_str: str) -> str:
                 The Digest
               </h1>
               <p style="margin:10px 0 0;font-size:14px;color:#475569;">
-                {date_str} &nbsp;·&nbsp; Finance · Geopolitics · Tech · Creator Economy
+               {date_str} &nbsp;·&nbsp; Finance · Geopolitics · Tech · Mind & Behavior · Lead & Grow
               </p>
             </td>
           </tr>
