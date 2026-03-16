@@ -103,7 +103,7 @@ def build_gemini_prompt(articles: dict) -> str:
 
 def call_gemini(prompt: str) -> str:
     client = genai.Client(api_key=GEMINI_API_KEY)
-    response = client.models.generate_content(model="gemini-2.0-flash", contents=prompt)
+    response = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
     return response.text
 
 
